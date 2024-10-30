@@ -4,36 +4,34 @@ import utils.MyArrayList;
 import utils.MyList;
 
 public class User {
-    private String name;
+    private String password;
     private String email;
     private Role role;
     private final MyList<Book> userBooks;
-    public User(String name, String email) {
-        this.name = name;
+    public User( String email, String password) {
+        this.password = password;
         this.email = email;
         this.role = Role.USER;
         this.userBooks = new MyArrayList<>();
     }
 
-    public String getName() {
-        return name;
+    @Override
+    public String toString() {
+        return "User{" +
+                ", email='" + email + '\'' +
+                '}';
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {
         return email;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", role=" + role +
-                '}';
     }
 
     public Role getRole() {
@@ -50,6 +48,8 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+
+
 
     }
 }
