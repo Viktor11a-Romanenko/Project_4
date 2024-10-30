@@ -10,11 +10,10 @@ public class Book {
 
 
 
-    public Book(int idBook, String author, String title, boolean isBusy) {
+    public Book(int idBook, String authorBook, String nameBook) {
         this.idBook = idBook;
         this.authorBook = authorBook;
         this.nameBook = nameBook;
-        this.isBusy = isBusy;
     }
 
     public int getSeries() {
