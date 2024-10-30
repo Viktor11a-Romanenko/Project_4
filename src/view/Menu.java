@@ -21,7 +21,7 @@ private void showMenu(){
             System.out.println("2. Do you want to smoke?");
             System.out.println("3. Are you admin?");
             System.out.println("0. Get out");
-            System.out.println("Make your choice");
+            System.out.println("\nMake your choice");
 
             int choice = scanner.nextByte();
             scanner.nextLine();
@@ -50,6 +50,40 @@ private void showSubMenu(int choice){
                 System.out.println("Make correct choice");
 
         }
+
+}
+private void showReaderMenu(){
+        while (true){
+            System.out.println("Reader Menu");
+            System.out.println("1. Login");
+            System.out.println("2. Registration");
+            System.out.println("3. Logout");
+            System.out.println("0. Back to the future");
+
+            System.out.println("\nMake your choice");
+            int input = scanner.nextInt();
+            scanner.nextLine();
+            if (input == 0) break;
+
+            handleReaderMenuChoice(input);
+
+        }
+}
+private void handleReaderMenuChoice(int input){
+        switch (input){
+            case 1:
+                System.out.println("Sorry, we are still in process");
+                waitRead();
+                break;
+            case 2:
+                System.out.println("Registration of new Reader");
+                System.out.println();
+
+
+        }
+
+
+
 
 }
 
