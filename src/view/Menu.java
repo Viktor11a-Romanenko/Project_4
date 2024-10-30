@@ -53,7 +53,22 @@ private void showSubMenu(int choice){
         }
 
 }
-private void showReaderMenu(){
+private void showLibraryMenu(){
+        while (true){
+            System.out.println("Library Menu");
+            System.out.println("1. Take a book");
+            System.out.println("2. Turn book");
+            System.out.println("0. Back to the future");
+
+            System.out.println("\nMake your choice");
+            int input = scanner.nextInt();
+            scanner.nextLine();
+            if (input == 0) break;
+
+        }
+
+}
+    private void showReaderMenu(){
         while (true){
             System.out.println("Reader Menu");
             System.out.println("1. Login");
@@ -69,7 +84,24 @@ private void showReaderMenu(){
             handleReaderMenuChoice(input);
 
         }
-}
+    }
+
+    private void showAdminMenu() {
+        while (true) {
+            System.out.println("Admin menu");
+            System.out.println("1. Check Reader");
+            System.out.println("2. Block Reader");
+            System.out.println("0. Back to the future");
+
+            System.out.println("\nMake your choice");
+            int input = scanner.nextInt();
+            scanner.nextLine();
+            if (input == 0) break;
+
+        }
+    }
+
+
 private void handleReaderMenuChoice(int input){
         switch (input){
             case 1:
