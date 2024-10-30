@@ -105,7 +105,7 @@ private void showLibraryMenu(){
 private void handleReaderMenuChoice(int input){
         switch (input){
             case 1:
-                System.out.println("Sorry, we are still in process");
+                System.out.println("Welcome to library menu");
                 waitRead();
                 break;
             case 2:
@@ -140,7 +140,6 @@ private void waitRead(){
     System.out.println("\nFor continuing press Enter");
     scanner.nextLine();
 }
-
 
 
 }
