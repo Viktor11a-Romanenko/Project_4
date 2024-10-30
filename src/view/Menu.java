@@ -1,5 +1,6 @@
 package view;
 
+import java.io.Reader;
 import java.util.Scanner;
 
 public class Menu {
@@ -77,15 +78,40 @@ private void handleReaderMenuChoice(int input){
                 break;
             case 2:
                 System.out.println("Registration of new Reader");
-                System.out.println();
+                System.out.println("Put in your email");
+                String email = scanner.nextLine();
 
+                System.out.println("Put in your password");
+                String password = scanner.nextLine();
 
+                Reader reader = service.registerReader(email, password);
+
+                if (reader != null){
+                    System.out.println("Congratulations, you are in");
+                }else {
+                    System.out.println("Houston we have a problem here");
+                }
+                waitRead();
+
+                break;
+            case 3:
+                service.logout();
+                System.out.println("You are got out");
+                waitRead();
+                break;
+            default:
+                System.out.println("\nWrong password");
+            }
         }
 
+private void waitRead(){
+    System.out.println("\nFor continuing press Enter");
+    scanner.nextLine();
+}
 
 
 
 }
 
 
-}
+
