@@ -21,8 +21,4 @@ public interface BookRepository {
 
     void deleteBook(Book book);
 
-    boolean takeBookFromLibruary(Book book, User user);
-
-    boolean returnBookToLibruary(Book book, User user);
-
 }
