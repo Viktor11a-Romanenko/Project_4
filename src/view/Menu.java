@@ -1,6 +1,8 @@
 package view;
 
-import java.io.Reader;
+import model.User;
+import service.MainService;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -116,9 +118,9 @@ private void handleReaderMenuChoice(int input){
                 System.out.println("Put in your password");
                 String password = scanner.nextLine();
 
-                Reader reader = service.registerReader(email, password);
+                User user = service.registerUser(email, password);
 
-                if (reader != null){
+                if (user != null){
                     System.out.println("Congratulations, you are in");
                 }else {
                     System.out.println("Houston we have a problem here");
