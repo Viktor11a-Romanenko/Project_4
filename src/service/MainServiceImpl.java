@@ -109,7 +109,8 @@ public class MainServiceImpl implements MainService {
             System.out.println("Книга уже занята.");
             return false;
         }
-        book.setBusy(false);
+        book.setBusy(true);
+        activeUser.takeBookHome(book);
         System.out.println("Книга успешно взята.");
         return true;
     }
@@ -123,11 +124,16 @@ public class MainServiceImpl implements MainService {
 
         Book book = repositoryBook.getById(idBook);
         if (book == null) return false;
-        if (book.isBusy()){
+        if (!book.isBusy()){
             System.out.println("Книга уже свободна.");
             return false;
         }
-        book.setBusy(true);
+        if (!activeUser.getUserBooks().contains(book)){
+            System.out.println();
+            return false;
+        }
+        book.setBusy(false);
+        activeUser.returnBook(book);
         System.out.println("Книга успешно возвращена.");
         return true;
     }
