@@ -12,11 +12,12 @@ public interface MainService {
     //Read
     MyList<Book> getAllBooks();
 
-    MyList<Book> getBooksByName (String nameBook);
+    MyList<Book> getByName (String nameBook);
 
-    MyList<Book> getBooksByAuthor (String authorName);
+    MyList<Book> getByAuthor (String authorName);
 
     MyList<Book> getFreeBooks();
+    MyList<Book> getBusyBooks();
 
     MyList<Book> getAllBooksInUser();
 
