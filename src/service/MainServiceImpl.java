@@ -71,11 +71,7 @@ public class MainServiceImpl implements MainService {
         return repositoryBook.getBusyBooks();
     }
 
-    @Override
-    public MyList<Book> getAllBooksInUser() {
-        //return repositoryBook.getAllBooksInUser; //todo
-        return null;
-    }
+
 
 
     @Override
