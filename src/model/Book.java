@@ -16,27 +16,27 @@ public class Book {
         this.nameBook = nameBook;
     }
 
-    public int getSeries() {
+    public int getIdBook() {
         return idBook;
     }
 
-    public void setSeries(int idBook) {
+    public void setIdBook(int idBook) {
         this.idBook = idBook;
     }
 
-    public String getAuthor() {
+    public String getAuthorBook() {
         return authorBook;
     }
 
-    public void setAuthor(String authorBook) {
+    public void setAuthorBook(String authorBook) {
         this.authorBook = authorBook;
     }
 
-    public String getTitle() {
+    public String getNameBook() {
         return nameBook;
     }
 
-    public void setTitle(String nameBook) {
+    public void setNameBook(String nameBook) {
         this.nameBook = nameBook;
     }
 
