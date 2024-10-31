@@ -51,6 +51,23 @@ public class User {
         this.email = email;
 
     }
+    public boolean takeBookHome(Book book){
+        if (book != null)
+        {
+            userBooks.add(book);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean returnBook(Book book){
+        if (book != null)
+        {
+            userBooks.remove(book);
+            return true;
+        }
+        return false;
+    }
 }
 
 
