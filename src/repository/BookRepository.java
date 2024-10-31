@@ -1,10 +1,11 @@
 package repository;
 
 import model.Book;
+import model.User;
 import utils.MyList;
 
 public interface BookRepository {
-    void addBook(String authorBook, String nameBook);
+    Book addBook(String authorBook, String nameBook);
 
     MyList<Book> getAllBooks();
 
@@ -20,5 +21,8 @@ public interface BookRepository {
 
     void deleteBook(Book book);
 
+    boolean takeBookFromLibruary(Book book, User user);
+
+    boolean returnBookToLibruary(Book book, User user);
 
 }

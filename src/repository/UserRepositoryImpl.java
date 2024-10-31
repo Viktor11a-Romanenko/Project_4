@@ -1,5 +1,6 @@
 package repository;
 
+import model.Book;
 import model.Role;
 import model.User;
 import utils.MyArrayList;
@@ -50,4 +51,5 @@ public class UserRepositoryImpl implements UserRepository {
         }
         return null;
     }
+
 }
