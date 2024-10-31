@@ -95,24 +95,4 @@ public class BookRepositoryImpl implements BookRepository {
         books.remove(book);
     }
 
-    @Override
-    public boolean takeBookFromLibruary(Book book, User user) {
-        if (book.isBusy()) return false;
-        if (user == null) return false;
-        if (user.takeBookHome(book)) {
-            book.setBusy(true);
-        }
-        return true;
-    }
-
-    @Override
-    public boolean returnBookToLibruary(Book book, User user) {
-        if (book.isBusy()) return false;
-        if (user == null) return false;
-        if (user.returnBook(book)) {
-            book.setBusy(false);
-        }
-
-        return true;
-    }
 }
