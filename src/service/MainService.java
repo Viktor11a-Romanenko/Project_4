@@ -19,7 +19,7 @@ public interface MainService {
     MyList<Book> getFreeBooks();
     MyList<Book> getBusyBooks();
 
-    MyList<Book> getAllBooksInUser();
+
 
 
     //Update
