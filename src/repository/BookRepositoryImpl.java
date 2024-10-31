@@ -61,7 +61,7 @@ public class BookRepositoryImpl implements BookRepository {
     public MyList<Book> getByAuthor(String author) {
         MyList<Book> result = new MyArrayList<>();
         for (Book book : books) {
-            if (book.getAuthor().contains(author)) result.add(book);
+            if (book.getAuthorBook().contains(author)) result.add(book);
         }
         return result;
     }
