@@ -3,6 +3,9 @@ package service;
 import model.Book;
 import model.Role;
 import model.User;
+import repository.BookRepository;
+import repository.BookRepositoryImpl;
+import repository.UserRepository;
 import utils.MyList;
 import utils.PersonValidator;
 
@@ -28,45 +31,50 @@ public class MainServiceImpl implements MainService {
             System.out.println("Добавление книги невозможно");
             return;
         }
+        Book book = repositoryBook.addBook(authorBook, nameBook);
 
-        Book book = new Book(idBook, authorBook, nameBook);
-        // todo нужна база данных
-        //books.add(book);
+
     }
 
     @Override
     public MyList<Book> getAllBooks() {
-        return repositoryBook.getAllBook();
+        return repositoryBook.getAllBooks();
     }
 
-    // todo
+
     @Override
-    public MyList<Book> getBooksByName(String nameBook) {
+    public MyList<Book> getByName(String nameBook) {
         if (nameBook == null || nameBook.isEmpty()) {
             System.out.println("Ошибка: название книги не может быть пустым.\"");
             return null;
         }
-        return repositoryBook.getBooksByName(nameBook);
+        return repositoryBook.getByName(nameBook);
     }
 
     @Override
-    public MyList<Book> getBooksByAuthor(String authorName) {
+    public MyList<Book> getByAuthor(String authorName) {
         if (authorName == null || authorName.isEmpty()){
             System.out.println("Ошибка: имя автора не может быть пустым.");
             return null;
         }
-        return repositoryBook.getBooksByAuthor(authorName);
+        return repositoryBook.getByAuthor(authorName);
 
     }
 
     @Override
     public MyList<Book> getFreeBooks() {
-        return repositoryBook.getFreeBooks;
+        return repositoryBook.getFreeBooks();
+    }
+
+    @Override
+    public MyList<Book> getBusyBooks() {
+        return repositoryBook.getBusyBooks();
     }
 
     @Override
     public MyList<Book> getAllBooksInUser() {
-        return repositoryBook.getAllBooksInUser;
+        //return repositoryBook.getAllBooksInUser; //todo
+        return null;
     }
 
 
@@ -76,23 +84,19 @@ public class MainServiceImpl implements MainService {
             System.out.println("Изменить книгу может только администратор");
             return false;
         }
-        // todo
+
         Book book = repositoryBook.getById(idBook);
-        if (book == null|| idBook <= 0) return  false;
-        book.setSeries(idBook); // todo переписать
+        if (book == null) return  false;
 
-        book.repositoryBook.getBookByName(nameBook);
         if (nameBook == null || nameBook.isEmpty()){
-//            return false;
-//        } else (book.getById() != idBook){
-//            return  false;
+            return false;
         }
+        book.setNameBook(nameBook);
 
-        book.setTitle(nameBook);
-
-        book.repositoryBook.getBookByAuthorName(authorName);
-        if (authorName == null || authorName.isEmpty()) return false;
-        book.setAuthor(authorName);
+        if (authorName == null || authorName.isEmpty()){
+           return false;
+        }
+        book.setAuthorBook(authorName);
         return  true;
 
     }
@@ -142,7 +146,7 @@ public class MainServiceImpl implements MainService {
         Book book = repositoryBook.getById(idBook);
         if (book == null) return null;
 
-        repositoryBook.deletBook(book);
+        repositoryBook.deleteBook(book);
         return book;
 
     }
@@ -159,7 +163,7 @@ public class MainServiceImpl implements MainService {
             return null;
         }
 
-        if (repositoryUser.isPasswordValid(password)){
+        if (!PersonValidator.isPasswordValid(password)){
             System.out.println("Email уже используется!");
             return null;
         }
