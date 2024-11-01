@@ -1,7 +1,9 @@
 package view;
 
+import model.Book;
 import model.User;
 import service.MainService;
+import utils.MyList;
 
 import java.util.Scanner;
 
@@ -13,15 +15,16 @@ public class Menu {
         this.service = service;
     }
 
-    public void run(){
+    public void run() {
 
         showMenu();
     }
-private void showMenu(){
+
+    private void showMenu() {
         while (true) {
             System.out.println("Welcome to library readers");
-            System.out.println("1. Do you want to read?");
-            System.out.println("2. Do you want to smoke?");
+            System.out.println("1. Looking for some?");
+            System.out.println("2. I want to read some");
             System.out.println("3. Are you admin?");
             System.out.println("0. Get out");
             System.out.println("\nMake your choice");
@@ -36,10 +39,10 @@ private void showMenu(){
             }
             showSubMenu(choice);
         }
-}
+    }
 
-private void showSubMenu(int choice){
-        switch (choice){
+    private void showSubMenu(int choice) {
+        switch (choice) {
             case 1:
                 showLibraryMenu();
                 break;
@@ -54,11 +57,12 @@ private void showSubMenu(int choice){
 
         }
 
-}
-private void showLibraryMenu(){
-        while (true){
+    }
+
+    private void showLibraryMenu() {
+        while (true) {
             System.out.println("Library Menu");
-            System.out.println("1. Take a book");
+            System.out.println("1. Questions/Answers");
             System.out.println("2. Turn book");
             System.out.println("0. Back to the future");
 
@@ -69,11 +73,12 @@ private void showLibraryMenu(){
 
         }
 
-}
-    private void showReaderMenu(){
-        while (true){
+    }
+
+    private void showReaderMenu() {
+        while (true) {
             System.out.println("Reader Menu");
-            System.out.println("1. Login");
+            System.out.println("1. Take a book");
             System.out.println("2. Registration");
             System.out.println("3. Logout");
             System.out.println("0. Back to the future");
@@ -103,14 +108,32 @@ private void showLibraryMenu(){
         }
     }
 
+    private void printBookList(MyList<Book> books) {
+        for (Book book : books) {
+            System.out.println(book.getIdBook() + ". " + " Name book: " + book.getNameBook() + " Author: " + book.getAuthorBook());
+        }
+    }
 
-private void handleReaderMenuChoice(int input){
-        switch (input){
+    private void handleReaderMenuChoice(int input) {
+        switch (input) {
             case 1:
                 System.out.println("Welcome to library menu");
+                MyList<Book> books = service.getFreeBooks();
+                printBookList(books);
+                System.out.println("Choose a book number");
+                int choice = scanner.nextInt();
+                scanner.nextLine();
+                boolean answer = service.takeBook(choice);
+                if (answer == true) {
+                    System.out.println("Cant take book");
+                } else {
+                    System.out.println("You took a book number: " + choice);
+                }
                 waitRead();
                 break;
             case 2:
+
+                // Todo переписать на книгу (метод)
                 System.out.println("Registration of new Reader");
                 System.out.println("Put in your email");
                 String email = scanner.nextLine();
@@ -120,9 +143,9 @@ private void handleReaderMenuChoice(int input){
 
                 User user = service.registerUser(email, password);
 
-                if (user != null){
+                if (user != null) {
                     System.out.println("Congratulations, you are in");
-                }else {
+                } else {
                     System.out.println("Houston we have a problem here");
                 }
                 waitRead();
@@ -135,13 +158,13 @@ private void handleReaderMenuChoice(int input){
                 break;
             default:
                 System.out.println("\nWrong password");
-            }
         }
+    }
 
-private void waitRead(){
-    System.out.println("\nFor continuing press Enter");
-    scanner.nextLine();
-}
+    private void waitRead() {
+        System.out.println("\nFor continuing press Enter");
+        scanner.nextLine();
+    }
 
 
 }
