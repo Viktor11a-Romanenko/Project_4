@@ -26,7 +26,9 @@ public class MainServiceImpl implements MainService {
             System.out.println("Добавление новой книги невозможно.");
             return;
         }
+
         if (nameBook == null || authorBook == null) {
+
             System.out.println("Добавление книги невозможно");
             return;
         }
