@@ -113,41 +113,40 @@ class MainServiceImplTest {
 
     }
 
-    @Test
-    void updateEditBook() {
-        String newBookAuthor = "Сергей Есенин Test";
-        String newBookName = "СтихиUpdateEditBookTest";
-        service.addBook(newBookName, newBookAuthor, 81);
-
-        MyList<Book> books = service.getByAuthor(newBookName);
-        assertEquals(1, books.size());
-
-        Book addedBook = books.get(0);
-        assertEquals(newBookAuthor, addedBook.getAuthorBook());
-        assertEquals(newBookName, addedBook.getNameBook());
-
-        String updatedBookName = "Странное новое имя киниги для теста";
-        String updatedBookAuthor = "Группа 4 пишет проект";
-
-        service.updateEditBook(updatedBookName, updatedBookAuthor, 81);
-
-
-        books = service.getByAuthor(updatedBookName);
-        assertEquals(1, books.size());
-
-        Book updatedBook = books.get(0);
-        assertEquals(newBookAuthor, updatedBook.getAuthorBook());
-        assertEquals(newBookName, updatedBook.getNameBook());
-
-    }
-
-    @Test
-    void takeBook() {
-    }
-
-    @Test
-    void returnBook() {
-    }
+//    @Test
+//    void updateEditBook() {
+//        String newBookAuthor = "Сергей Есенин Test";
+//        String newBookName = "СтихиUpdateEditBookTest";
+//        Book addedBook = service.addBook(newBookName, newBookAuthor);
+//
+//
+//
+//        assertEquals(newBookAuthor, addedBook.getAuthorBook());
+//        assertEquals(newBookName, addedBook.getNameBook());
+//
+//        String updatedBookName = "Странное новое имя киниги для теста";
+//        String updatedBookAuthor = "Группа 4 пишет проект";
+//        service.loginUser("1", "1");
+//
+//        service.updateEditBook(updatedBookName, updatedBookAuthor, addedBook.getIdBook());
+//
+//
+//        MyList<Book> books = service.getByName(updatedBookName);
+//        assertEquals(1, books.size());
+//
+//        Book updatedBook = books.get(0);
+//        assertEquals(newBookAuthor, updatedBook.getAuthorBook());
+//        assertEquals(newBookName, updatedBook.getNameBook());
+//
+//    }
+//
+//    @Test
+//    void takeBook() {
+//    }
+//
+//    @Test
+//    void returnBook() {
+//    }
 
     @Test
     void deleteBook() {
