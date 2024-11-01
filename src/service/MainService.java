@@ -7,7 +7,7 @@ import utils.MyList;
 public interface MainService {
 
     //Creat
-    void addBook (String nameBook, String authorBook);
+    Book addBook (String nameBook, String authorBook);
 
     //Read
     MyList<Book> getAllBooks();
