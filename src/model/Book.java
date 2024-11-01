@@ -53,7 +53,9 @@ public class Book {
         if (this == o) return true;
         if (!(o instanceof Book)) return false;
         Book book = (Book) o;
-        return isBusy == book.isBusy;
+        if (this.authorBook == book.authorBook && this.nameBook == book.nameBook)  return true;
+
+        return false;
     }
 
     @Override
