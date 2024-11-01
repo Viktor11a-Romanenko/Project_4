@@ -21,20 +21,19 @@ public class MainServiceImpl implements MainService {
     }
 
     @Override
-    public void addBook(String nameBook, String authorBook) {
+    public Book addBook(String nameBook, String authorBook) {
         if (activeUser == null || activeUser.getRole() != Role.ADMIN) {
             System.out.println("Добавление новой книги невозможно.");
-            return;
         }
 
         if (nameBook == null || authorBook == null) {
 
             System.out.println("Добавление книги невозможно");
-            return;
         }
         Book book = repositoryBook.addBook(authorBook, nameBook);
 
 
+        return book;
     }
 
     @Override
